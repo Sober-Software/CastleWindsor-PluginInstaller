@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace CastleWindsor.Installation.Installation
+namespace SoberSoftware.CastleWindsor.Installation.Installation
 {
     public interface IPluginAssemblyProvider
     {

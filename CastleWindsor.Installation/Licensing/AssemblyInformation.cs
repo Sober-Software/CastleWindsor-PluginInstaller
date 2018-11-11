@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Reflection;
 
-namespace CastleWindsor.Installation.Licensing
+namespace SoberSoftware.CastleWindsor.Installation.Licensing
 {
     public class AssemblyInformation
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CastleWindsor.Installation.Licensing
+namespace SoberSoftware.CastleWindsor.Installation.Licensing
 {
     [AttributeUsage(AttributeTargets.Assembly)]
     public class ApiKeyAttribute : Attribute

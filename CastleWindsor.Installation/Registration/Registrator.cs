@@ -7,10 +7,10 @@ using Castle.MicroKernel;
 using Castle.MicroKernel.Registration;
 using Castle.Windsor;
 using Castle.Windsor.Installer;
-using CastleWindsor.Installation.Installation;
-using CastleWindsor.Installation.Licensing;
+using SoberSoftware.CastleWindsor.Installation.Installation;
+using SoberSoftware.CastleWindsor.Installation.Licensing;
 
-namespace CastleWindsor.Installation.Registration
+namespace SoberSoftware.CastleWindsor.Installation.Registration
 {
     public static class Registrator
     {

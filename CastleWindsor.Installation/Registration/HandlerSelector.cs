@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Linq;
 using Castle.MicroKernel;
-using CastleWindsor.Installation.Licensing;
+using SoberSoftware.CastleWindsor.Installation.Licensing;
 
-namespace CastleWindsor.Installation.Registration
+namespace SoberSoftware.CastleWindsor.Installation.Registration
 {
     public class HandlerSelector<TImplementation, TService> : IHandlerSelector
         where TImplementation : TService where TService : class

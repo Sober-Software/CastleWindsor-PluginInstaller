@@ -1,4 +1,4 @@
-﻿namespace CastleWindsor.Installation.Licensing
+﻿namespace SoberSoftware.CastleWindsor.Installation.Licensing
 {
     public class ContextUtilities
     {

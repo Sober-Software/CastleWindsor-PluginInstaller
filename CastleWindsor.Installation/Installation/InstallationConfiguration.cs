@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace CastleWindsor.Installation.Installation
+namespace SoberSoftware.CastleWindsor.Installation.Installation
 {
     public static class InstallationConfiguration
     {

@@ -1,4 +1,4 @@
-﻿namespace CastleWindsor.Installation.Installation
+﻿namespace SoberSoftware.CastleWindsor.Installation.Installation
 {
     public interface IMainAssemblyProvider
     {

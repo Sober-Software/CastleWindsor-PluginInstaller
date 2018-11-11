@@ -1,4 +1,4 @@
-﻿namespace CastleWindsor.Installation.Registration
+﻿namespace SoberSoftware.CastleWindsor.Installation.Registration
 {
     public interface ISelectionCriterion
     {

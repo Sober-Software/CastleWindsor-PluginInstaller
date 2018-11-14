@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using Castle.Core;
@@ -96,11 +97,13 @@ namespace SoberSoftware.CastleWindsor.Installation.Registration
 
         private static void InstallPluginAssemblies()
         {
-            IEnumerable<string> pluginAssemblyNames = InstallationConfiguration.GetCustomerAssemblyNames();
+            IEnumerable<string> pluginAssemblyNames = InstallationConfiguration.GetPluginAssemblyNames();
 
             foreach (string assemblyName in pluginAssemblyNames)
             {
-                ContainerInstance.Install(FromAssembly.Named(assemblyName));
+                string path = Path.Combine(Directory.GetCurrentDirectory(), $"{assemblyName}.dll");
+                Assembly assembly = Assembly.LoadFrom(path);
+                ContainerInstance.Install(FromAssembly.Instance(assembly));
             }
         }
     }

@@ -10,7 +10,7 @@ namespace MT_AppRunner.Installation
             return new List<string>
             {
                 "Customer.CountryRoad",
-                "ServiceBackend.Interfaces"
+                "Customer.Yoplait"
             };
         }
     }

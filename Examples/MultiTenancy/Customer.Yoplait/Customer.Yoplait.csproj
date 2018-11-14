@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E0F67A59-6841-4475-8533-F4534DB36ED3}</ProjectGuid>
+    <ProjectGuid>{EC14EC43-0E65-4471-9490-9FA5A9613AA9}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ServiceBackend.Interfaces</RootNamespace>
-    <AssemblyName>ServiceBackend.Interfaces</AssemblyName>
+    <RootNamespace>Customer.Yoplait</RootNamespace>
+    <AssemblyName>Customer.Yoplait</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -32,7 +32,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Remoting" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -41,16 +44,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BusinessLogic\ICommunicator.cs" />
-    <Compile Include="BusinessLogic\IRequestGenerator.cs" />
-    <Compile Include="BusinessLogic\IResponseProcessor.cs" />
-    <Compile Include="ConsumedApiLogic\IBackendCommunicator.cs" />
-    <Compile Include="ConsumedApiLogic\IBackendRequestSender.cs" />
-    <Compile Include="ConsumedApiLogic\IBackendRequestTranslator.cs" />
-    <Compile Include="ConsumedApiLogic\IBackendResponseTranslator.cs" />
-    <Compile Include="IServiceProvider.cs" />
+    <Compile Include="SomethingCompletelyDifferent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\MT-AppRunner\MT-AppRunner.csproj">
+      <Project>{e4274445-6ee1-4894-9215-f9405472cdc6}</Project>
+      <Name>MT-AppRunner</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>call xcopy /Y "$(TargetPath)" "..\..\..\MT-AppRunner\bin\Debug\"</PostBuildEvent>
+  </PropertyGroup>
 </Project>

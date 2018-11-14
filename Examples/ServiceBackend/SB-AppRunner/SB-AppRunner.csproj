@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CastleWindsor.Installation\CastleWindsor.Installation.csproj" />
+    <ProjectReference Include="..\..\..\CastleWindsor.Installation\CastleWindsor.Installation.csproj" />
     <ProjectReference Include="..\ServiceBackend.Implementation\ServiceBackend.Implementation.csproj" />
     <ProjectReference Include="..\ServiceBackend.Interfaces\ServiceBackend.Interfaces.csproj" />
   </ItemGroup>

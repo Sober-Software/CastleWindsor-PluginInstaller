@@ -39,14 +39,7 @@ namespace SoberSoftware.CastleWindsor.Installation.Registration
             container.Kernel.AddHandlerSelector(
                 new HandlerSelector<TImplementation, TService>(selectionCriteria));
         }
-
-        public static string GetCustomerApiKey()
-        {
-            Assembly customerAssembly = Assembly.GetCallingAssembly();
-            return
-                AssemblyInformation.GetAttributeValue<ApiKeyAttribute>(a => a.ApiKey, customerAssembly);
-        }
-
+        
         public static void InstallMainApplication(IMainAssemblyProvider mainAssemblyProvider)
         {
             InstallationConfiguration.MainAssemblyProvider = mainAssemblyProvider;
@@ -89,7 +82,7 @@ namespace SoberSoftware.CastleWindsor.Installation.Registration
         {
             return ContainerInstance.Resolve<T>();
         }
-        
+
         private static void InstallMainApplication()
         {
             ContainerInstance.Install(FromAssembly.Named(InstallationConfiguration.GetMainAssemblyName()));

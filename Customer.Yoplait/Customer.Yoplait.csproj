@@ -57,13 +57,13 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AppRunner\AppRunner.csproj">
-      <Project>{E4274445-6EE1-4894-9215-F9405472CDC6}</Project>
-      <Name>AppRunner</Name>
+    <ProjectReference Include="..\MT-AppRunner\MT-AppRunner.csproj">
+      <Project>{e4274445-6ee1-4894-9215-f9405472cdc6}</Project>
+      <Name>MT-AppRunner</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>call xcopy /Y "$(TargetPath)" "..\..\..\AppRunner\bin\Debug\"</PostBuildEvent>
+    <PostBuildEvent>call xcopy /Y "$(TargetPath)" "..\..\..\MT-AppRunner\bin\Debug\"</PostBuildEvent>
   </PropertyGroup>
 </Project>

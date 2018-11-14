@@ -1,9 +1,9 @@
-﻿using AppRunner.Customer;
-using AppRunner.Output;
-using Castle.MicroKernel.Registration;
+﻿using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
 using Customer.CountryRoad.Customer;
+using MT_AppRunner.Customer;
+using MT_AppRunner.Output;
 using SoberSoftware.CastleWindsor.Installation.Registration;
 
 namespace Customer.CountryRoad.Installation
@@ -33,7 +33,7 @@ namespace Customer.CountryRoad.Installation
             params ISelectionCriterion[] selectionCriteria)
             where TImplementation : TService where TService : class
         {
-            Registrator.AddHandlerSelector<TImplementation, TService>(container, CustomerKey,
+            Registrator.AddHandlerSelector<TImplementation, TService>(container,
                 selectionCriteria);
         }
 

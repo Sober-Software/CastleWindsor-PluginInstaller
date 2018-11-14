@@ -32,11 +32,11 @@ namespace SoberSoftware.CastleWindsor.Installation.Registration
         }
 
         public static void AddHandlerSelector<TImplementation, TService>(IWindsorContainer container,
-            string apiKey, params ISelectionCriterion[] selectionCriteria)
+            params ISelectionCriterion[] selectionCriteria)
             where TImplementation : TService where TService : class
         {
             container.Kernel.AddHandlerSelector(
-                new HandlerSelector<TImplementation, TService>(apiKey, selectionCriteria));
+                new HandlerSelector<TImplementation, TService>(selectionCriteria));
         }
 
         public static string GetCustomerApiKey()
@@ -88,7 +88,7 @@ namespace SoberSoftware.CastleWindsor.Installation.Registration
         {
             return ContainerInstance.Resolve<T>();
         }
-
+        
         private static void InstallMainApplication()
         {
             ContainerInstance.Install(FromAssembly.Named(InstallationConfiguration.GetMainAssemblyName()));

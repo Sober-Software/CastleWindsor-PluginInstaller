@@ -1,7 +1,7 @@
 ﻿using SoberSoftware.CastleWindsor.Installation.Installation;
 using SoberSoftware.CastleWindsor.Installation.Licensing;
 
-namespace AppRunner.Installation
+namespace MT_AppRunner.Installation
 {
     public class MainAssemblyProvider : IMainAssemblyProvider
     {

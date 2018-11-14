@@ -1,12 +1,12 @@
 ﻿using System;
-using AppRunner.Customer;
-using AppRunner.Installation;
-using AppRunner.Output;
+using MT_AppRunner.Customer;
+using MT_AppRunner.Installation;
+using MT_AppRunner.Output;
 using SoberSoftware.CastleWindsor.Installation.Installation;
 using SoberSoftware.CastleWindsor.Installation.Licensing;
 using SoberSoftware.CastleWindsor.Installation.Registration;
 
-namespace AppRunner
+namespace MT_AppRunner
 {
     public class Program
     {

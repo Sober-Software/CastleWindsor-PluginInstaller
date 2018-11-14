@@ -3,9 +3,9 @@ using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
 using SoberSoftware.CastleWindsor.Installation.Registration;
 
-namespace AppRunner.Installation
+namespace SB_AppRunner
 {
-    public class Installer : IWindsorInstaller
+    public class Installation : IWindsorInstaller
     {
         public void Install(IWindsorContainer container, IConfigurationStore store)
         {

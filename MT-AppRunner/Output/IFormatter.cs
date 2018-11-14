@@ -1,4 +1,4 @@
-﻿namespace AppRunner.Output
+﻿namespace MT_AppRunner.Output
 {
     public interface IFormatter
     {

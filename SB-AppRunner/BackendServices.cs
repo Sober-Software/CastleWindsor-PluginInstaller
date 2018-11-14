@@ -1,15 +1,16 @@
 ﻿using System.Collections.Generic;
 using SoberSoftware.CastleWindsor.Installation.Installation;
 
-namespace AppRunner.Installation
+namespace SB_AppRunner
 {
-    public class PluginRegistration : IPluginAssemblyProvider
+    public class BackendServices : IPluginAssemblyProvider
     {
         public IEnumerable<string> GetAssemblyNames()
         {
-            return new List<string>
+            return new[]
             {
-                "Customer.CountryRoad"
+                "ServiceBackend.Implementation",
+                "ServiceBackend.CustomerImplemenation"
             };
         }
     }

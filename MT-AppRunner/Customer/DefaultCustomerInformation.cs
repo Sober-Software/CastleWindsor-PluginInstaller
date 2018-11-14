@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace AppRunner.Customer
+namespace MT_AppRunner.Customer
 {
     public class DefaultCustomerInformation : ICustomerInformation
     {

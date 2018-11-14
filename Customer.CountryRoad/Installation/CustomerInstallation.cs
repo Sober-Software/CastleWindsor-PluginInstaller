@@ -10,13 +10,6 @@ namespace Customer.CountryRoad.Installation
 {
     public class CustomerInstallation : IWindsorInstaller
     {
-        protected string CustomerKey { get; }
-
-        public CustomerInstallation()
-        {
-            CustomerKey = GetApiLicenseKey();
-        }
-
         public void Install(IWindsorContainer container, IConfigurationStore store)
         {
             RegisterThisAssembly(container);
@@ -36,12 +29,7 @@ namespace Customer.CountryRoad.Installation
             Registrator.AddHandlerSelector<TImplementation, TService>(container,
                 selectionCriteria);
         }
-
-        private string GetApiLicenseKey()
-        {
-            return Registrator.GetCustomerApiKey();
-        }
-
+        
         private void RegisterThisAssembly(IWindsorContainer container)
         {
             Registrator.RegisterThisAssembly(container);

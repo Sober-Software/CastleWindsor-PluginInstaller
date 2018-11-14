@@ -27,7 +27,7 @@ namespace SoberSoftware.CastleWindsor.Installation.Registration
 
         private bool SelectionCriteriaAreTrue()
         {
-            return selectionCriteria.Length == 0 || selectionCriteria.All(x => x.IsTrue());
+            return selectionCriteria.Length > 0 && selectionCriteria.All(x => x.IsTrue());
         }
     }
 }

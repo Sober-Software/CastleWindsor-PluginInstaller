@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{EC14EC43-0E65-4471-9490-9FA5A9613AA9}</ProjectGuid>
+    <ProjectGuid>{C696F0C0-F104-46E5-AD41-372AF38583DE}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Customer.Yoplait</RootNamespace>
-    <AssemblyName>Customer.Yoplait</AssemblyName>
+    <RootNamespace>Customer.CountryRoad</RootNamespace>
+    <AssemblyName>Customer.CountryRoad</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -31,11 +31,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Castle.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
-      <HintPath>..\packages\Castle.Core.4.3.1\lib\net45\Castle.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Castle.Windsor, Version=4.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
-      <HintPath>..\packages\Castle.Windsor.4.1.1\lib\net45\Castle.Windsor.dll</HintPath>
+    <Reference Include="Castle.Windsor">
+      <HintPath>..\..\..\..\..\Users\gshepherd\.nuget\packages\castle.windsor\4.1.1\lib\netstandard1.6\Castle.Windsor.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
@@ -50,13 +47,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="SomethingCompletelyDifferent.cs" />
+    <Compile Include="Customer\CustomerInformation.cs" />
+    <Compile Include="DateTimeFormat.cs" />
+    <Compile Include="Installation\AlwaysFalse.cs" />
+    <Compile Include="Installation\CustomerInstallation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
+    <ProjectReference Include="..\..\..\CastleWindsor.Installation\CastleWindsor.Installation.csproj">
+      <Project>{97188561-5027-4841-9732-36efa6db71c7}</Project>
+      <Name>CastleWindsor.Installation</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MT-AppRunner\MT-AppRunner.csproj">
       <Project>{e4274445-6ee1-4894-9215-f9405472cdc6}</Project>
       <Name>MT-AppRunner</Name>

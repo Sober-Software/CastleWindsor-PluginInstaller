@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{E4274445-6EE1-4894-9215-F9405472CDC6}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>AppRunner</RootNamespace>
-    <AssemblyName>AppRunner</AssemblyName>
+    <RootNamespace>MT_AppRunner</RootNamespace>
+    <AssemblyName>MT-AppRunner</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

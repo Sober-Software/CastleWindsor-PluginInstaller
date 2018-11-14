@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using Castle.Core;
@@ -32,11 +33,11 @@ namespace SoberSoftware.CastleWindsor.Installation.Registration
         }
 
         public static void AddHandlerSelector<TImplementation, TService>(IWindsorContainer container,
-            string apiKey, params ISelectionCriterion[] selectionCriteria)
+            params ISelectionCriterion[] selectionCriteria)
             where TImplementation : TService where TService : class
         {
             container.Kernel.AddHandlerSelector(
-                new HandlerSelector<TImplementation, TService>(apiKey, selectionCriteria));
+                new HandlerSelector<TImplementation, TService>(selectionCriteria));
         }
 
         public static string GetCustomerApiKey()
@@ -88,7 +89,7 @@ namespace SoberSoftware.CastleWindsor.Installation.Registration
         {
             return ContainerInstance.Resolve<T>();
         }
-
+        
         private static void InstallMainApplication()
         {
             ContainerInstance.Install(FromAssembly.Named(InstallationConfiguration.GetMainAssemblyName()));
@@ -96,11 +97,13 @@ namespace SoberSoftware.CastleWindsor.Installation.Registration
 
         private static void InstallPluginAssemblies()
         {
-            IEnumerable<string> pluginAssemblyNames = InstallationConfiguration.GetCustomerAssemblyNames();
+            IEnumerable<string> pluginAssemblyNames = InstallationConfiguration.GetPluginAssemblyNames();
 
             foreach (string assemblyName in pluginAssemblyNames)
             {
-                ContainerInstance.Install(FromAssembly.Named(assemblyName));
+                string path = Path.Combine(Directory.GetCurrentDirectory(), $"{assemblyName}.dll");
+                Assembly assembly = Assembly.LoadFrom(path);
+                ContainerInstance.Install(FromAssembly.Instance(assembly));
             }
         }
     }

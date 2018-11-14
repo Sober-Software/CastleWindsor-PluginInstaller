@@ -1,26 +1,22 @@
 ﻿using System;
 using System.Linq;
 using Castle.MicroKernel;
-using SoberSoftware.CastleWindsor.Installation.Licensing;
 
 namespace SoberSoftware.CastleWindsor.Installation.Registration
 {
     public class HandlerSelector<TImplementation, TService> : IHandlerSelector
         where TImplementation : TService where TService : class
     {
-        private readonly string apiKey;
-
         private readonly ISelectionCriterion[] selectionCriteria;
 
-        public HandlerSelector(string apiKey, ISelectionCriterion[] selectionCriteria)
+        public HandlerSelector(ISelectionCriterion[] selectionCriteria)
         {
-            this.apiKey = apiKey;
             this.selectionCriteria = selectionCriteria;
         }
 
         public bool HasOpinionAbout(string key, Type service)
         {
-            return apiKey == ContextUtilities.ContextValidationString && service == typeof(TService) &&
+            return service == typeof(TService) &&
                    SelectionCriteriaAreTrue();
         }
 
@@ -31,7 +27,7 @@ namespace SoberSoftware.CastleWindsor.Installation.Registration
 
         private bool SelectionCriteriaAreTrue()
         {
-            return selectionCriteria.Length == 0 || selectionCriteria.Any(x => x.IsTrue());
+            return selectionCriteria.Length > 0 && selectionCriteria.All(x => x.IsTrue());
         }
     }
 }

@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C696F0C0-F104-46E5-AD41-372AF38583DE}</ProjectGuid>
+    <ProjectGuid>{E0F67A59-6841-4475-8533-F4534DB36ED3}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Customer.CountryRoad</RootNamespace>
-    <AssemblyName>Customer.CountryRoad</AssemblyName>
+    <RootNamespace>ServiceBackend.Interfaces</RootNamespace>
+    <AssemblyName>ServiceBackend.Interfaces</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -31,17 +31,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Castle.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
-      <HintPath>..\packages\Castle.Core.4.3.1\lib\net45\Castle.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Castle.Windsor, Version=4.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
-      <HintPath>..\packages\Castle.Windsor.4.1.1\lib\net45\Castle.Windsor.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Runtime.Remoting" />
-    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -50,27 +41,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Customer\CustomerInformation.cs" />
-    <Compile Include="DateTimeFormat.cs" />
-    <Compile Include="Installation\AlwaysFalse.cs" />
-    <Compile Include="Installation\CustomerInstallation.cs" />
+    <Compile Include="BusinessLogic\ICommunicator.cs" />
+    <Compile Include="BusinessLogic\IRequestGenerator.cs" />
+    <Compile Include="BusinessLogic\IResponseProcessor.cs" />
+    <Compile Include="ConsumedApiLogic\IBackendCommunicator.cs" />
+    <Compile Include="ConsumedApiLogic\IBackendRequestSender.cs" />
+    <Compile Include="ConsumedApiLogic\IBackendRequestTranslator.cs" />
+    <Compile Include="ConsumedApiLogic\IBackendResponseTranslator.cs" />
+    <Compile Include="IServiceProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\CastleWindsor.Installation\CastleWindsor.Installation.csproj">
-      <Project>{355A072F-97A9-45DA-B94F-3E68E63FAB90}</Project>
-      <Name>CastleWindsor.Installation</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\MT-AppRunner\MT-AppRunner.csproj">
-      <Project>{e4274445-6ee1-4894-9215-f9405472cdc6}</Project>
-      <Name>MT-AppRunner</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <PropertyGroup>
-    <PostBuildEvent>call xcopy /Y "$(TargetPath)" "..\..\..\MT-AppRunner\bin\Debug\"</PostBuildEvent>
-  </PropertyGroup>
 </Project>

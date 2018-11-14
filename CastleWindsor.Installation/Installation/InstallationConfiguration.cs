@@ -53,7 +53,7 @@ namespace SoberSoftware.CastleWindsor.Installation.Installation
             }
         }
 
-        public static IEnumerable<string> GetCustomerAssemblyNames()
+        public static IEnumerable<string> GetPluginAssemblyNames()
         {
             return PluginAssemblyProvider.GetAssemblyNames();
         }

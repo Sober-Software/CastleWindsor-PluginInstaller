@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>ServiceBackend.CustomerImplemenation</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CastleWindsor.Installation\CastleWindsor.Installation.csproj" />
+    <ProjectReference Include="..\ServiceBackend.Implementation\ServiceBackend.Implementation.csproj" />
+    <ProjectReference Include="..\ServiceBackend.Interfaces\ServiceBackend.Interfaces.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Castle.Windsor">
+      <HintPath>..\..\..\Users\gshepherd\.nuget\packages\castle.windsor\4.1.1\lib\netstandard1.6\Castle.Windsor.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="call xcopy /Y &quot;$(TargetDir)ServiceBackend.CustomerImplemenation.*&quot; &quot;..\SB-AppRunner\bin\Debug\netcoreapp2.1\&quot;" />
+  </Target>
+
+</Project>

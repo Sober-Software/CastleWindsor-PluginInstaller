@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <RootNamespace>SB_AppRunner</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CastleWindsor.Installation\CastleWindsor.Installation.csproj" />
+    <ProjectReference Include="..\ServiceBackend.Implementation\ServiceBackend.Implementation.csproj" />
+    <ProjectReference Include="..\ServiceBackend.Interfaces\ServiceBackend.Interfaces.csproj" />
+  </ItemGroup>
+
+</Project>

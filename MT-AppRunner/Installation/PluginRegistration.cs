@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using SoberSoftware.CastleWindsor.Installation.Installation;
 
-namespace AppRunner.Installation
+namespace MT_AppRunner.Installation
 {
     public class PluginRegistration : IPluginAssemblyProvider
     {
@@ -9,7 +9,8 @@ namespace AppRunner.Installation
         {
             return new List<string>
             {
-                "Customer.CountryRoad"
+                "Customer.CountryRoad",
+                "Customer.Yoplait"
             };
         }
     }

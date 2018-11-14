@@ -1,7 +1,7 @@
 ﻿using System;
-using AppRunner.Customer;
+using MT_AppRunner.Customer;
 
-namespace AppRunner.Output
+namespace MT_AppRunner.Output
 {
     public class DefaultConsoleWriter : IConsoleWriter
     {

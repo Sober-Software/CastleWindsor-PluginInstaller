@@ -53,7 +53,7 @@ namespace SoberSoftware.CastleWindsor.Installation.Installation
             }
         }
 
-        public static string GetMainAssemblyName()
+        public static string GetApplicationEntryPoint()
         {
             return MainAssemblyProvider.GetAssemblyName();
         }

@@ -1,6 +1,8 @@
 ﻿using System;
+using Castle.Windsor;
 using ServiceBackend.Implementation.DataType;
 using ServiceBackend.Interfaces;
+using SoberSoftware.CastleWindsor.Installation;
 using SoberSoftware.CastleWindsor.Installation.Registration;
 
 namespace SB_AppRunner
@@ -11,11 +13,12 @@ namespace SB_AppRunner
 
         private static void Main(string[] args)
         {
-            Registrator.InstallMainApplication(new Registration());
-            Registrator.InstallPluginAssemblies(new BackendServices());
+            IWindsorContainer container = new WindsorContainerWrapper(new WindsorContainer());
+            container.InstallMainApplication(new Registration());
+            container.InstallPluginAssemblies(new BackendServices());
 
             IServiceProvider<string, BusinessResponse> serviceProvider =
-                Registrator.Resolve<IServiceProvider<string, BusinessResponse>>();
+                container.Resolve<IServiceProvider<string, BusinessResponse>>();
             string serviceData = @"{ ""datafield"" : ""Some data""}";
             BusinessResponse response = serviceProvider.PerformService(serviceData);
             Console.WriteLine($"{response.Success}");
@@ -28,7 +31,7 @@ namespace SB_AppRunner
             Console.Write("Implementation: ");
             Implementation = Console.ReadLine();
 
-            serviceProvider = Registrator.Resolve<IServiceProvider<string, BusinessResponse>>();
+            serviceProvider = container.Resolve<IServiceProvider<string, BusinessResponse>>();
             response = serviceProvider.PerformService(serviceData);
             Console.WriteLine($"{response.Success}");
 

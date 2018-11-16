@@ -3,7 +3,7 @@ using Castle.Windsor;
 using ServiceBackend.Implementation.DataType;
 using ServiceBackend.Interfaces;
 using SoberSoftware.CastleWindsor.Installation;
-using SoberSoftware.CastleWindsor.Installation.Registration;
+using SoberSoftware.CastleWindsor.Installation.Installation;
 
 namespace SB_AppRunner
 {
@@ -13,9 +13,12 @@ namespace SB_AppRunner
 
         private static void Main(string[] args)
         {
-            IWindsorContainer container = new WindsorContainerWrapper(new WindsorContainer());
-            container.InstallMainApplication(new Registration());
-            container.InstallPluginAssemblies(new BackendServices());
+            IInstallationStrategy strategy = new DefaultInstallationStrategy(new Registration());
+            strategy.PluginAssembliesProvider = new DefaultPluginAssembliesProvider();
+
+            WindsorContainerWrapper installerWrapper = new WindsorContainerWrapper(new WindsorContainer(), new Registration(), new BackendServices());
+            installerWrapper.Install();
+            IWindsorContainer container = installerWrapper.WindsorContainer;
 
             IServiceProvider<string, BusinessResponse> serviceProvider =
                 container.Resolve<IServiceProvider<string, BusinessResponse>>();

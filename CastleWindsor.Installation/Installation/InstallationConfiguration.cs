@@ -7,7 +7,7 @@ namespace SoberSoftware.CastleWindsor.Installation.Installation
     {
         private static IMainAssemblyProvider mainAssemblyProvider;
 
-        private static IPluginAssemblyProvider pluginAssemblyProvider;
+        private static IPluginAssembliesProvider pluginAssembliesProvider;
 
         public static IMainAssemblyProvider MainAssemblyProvider
         {
@@ -31,16 +31,16 @@ namespace SoberSoftware.CastleWindsor.Installation.Installation
             }
         }
 
-        public static IPluginAssemblyProvider PluginAssemblyProvider
+        public static IPluginAssembliesProvider PluginAssembliesProvider
         {
             get
             {
-                if (pluginAssemblyProvider == null)
+                if (pluginAssembliesProvider == null)
                 {
-                    pluginAssemblyProvider = new DefaultPluginAssemblyProvider();
+                    pluginAssembliesProvider = new DefaultPluginAssembliesProvider();
                 }
 
-                return pluginAssemblyProvider;
+                return pluginAssembliesProvider;
             }
             set
             {
@@ -49,18 +49,8 @@ namespace SoberSoftware.CastleWindsor.Installation.Installation
                     throw new ArgumentNullException("CustomerAssemblyProvider cannot be null.");
                 }
 
-                pluginAssemblyProvider = value;
+                pluginAssembliesProvider = value;
             }
-        }
-
-        public static string GetApplicationEntryPoint()
-        {
-            return MainAssemblyProvider.GetAssemblyName();
-        }
-
-        public static IEnumerable<string> GetPluginAssemblyNames()
-        {
-            return PluginAssemblyProvider.GetAssemblyNames();
         }
     }
 }

@@ -14,8 +14,6 @@ namespace MT_AppRunner
         private static void Main(string[] args)
         {
             WindsorContainer container = new WindsorContainer();
-            container.InstallMainApplication(new MainAssemblyProvider());
-            container.InstallPluginAssemblies(container.Resolve<IPluginAssemblyProvider>());
 
             do
             {

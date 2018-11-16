@@ -1,16 +1,18 @@
 ﻿using System.Collections.Generic;
+using System.IO;
+using System.Reflection;
 using SoberSoftware.CastleWindsor.Installation.Installation;
 
 namespace MT_AppRunner.Installation
 {
-    public class PluginRegistration : IPluginAssemblyProvider
+    public class PluginRegistration : IPluginAssembliesProvider
     {
-        public IEnumerable<string> GetAssemblyNames()
+        public IEnumerable<Assembly> GetAssemblies()
         {
-            return new List<string>
+            return new List<Assembly>
             {
-                "Customer.CountryRoad",
-                "Customer.Yoplait"
+                Assembly.LoadFrom(Path.Combine(Directory.GetCurrentDirectory(), "Customer.CountryRoad.dll")),
+                Assembly.LoadFrom(Path.Combine(Directory.GetCurrentDirectory(), "Customer.Yoplait.dll"))
             };
         }
     }

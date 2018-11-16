@@ -5,9 +5,9 @@ namespace SB_AppRunner
 {
     public class Registration : IMainAssemblyProvider
     {
-        public string GetAssemblyName()
+        public Assembly GetAssembly()
         {
-            return Assembly.GetExecutingAssembly().FullName;
+            return Assembly.GetExecutingAssembly();
         }
     }
 }

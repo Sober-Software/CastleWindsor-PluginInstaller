@@ -1,7 +1,9 @@
-﻿namespace SoberSoftware.CastleWindsor.Installation.Installation
+﻿using System.Reflection;
+
+namespace SoberSoftware.CastleWindsor.Installation.Installation
 {
     public interface IMainAssemblyProvider
     {
-        string GetAssemblyName();
+        Assembly GetAssembly();
     }
 }

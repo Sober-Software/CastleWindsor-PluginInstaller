@@ -26,13 +26,13 @@ namespace Customer.CountryRoad.Installation
             params ISelectionCriterion[] selectionCriteria)
             where TImplementation : TService where TService : class
         {
-            Registrator.AddHandlerSelector<TImplementation, TService>(container,
+            container.AddHandlerSelector<TImplementation, TService>(
                 selectionCriteria);
         }
         
         private void RegisterThisAssembly(IWindsorContainer container)
         {
-            Registrator.RegisterThisAssembly(container);
+            container.RegisterThisAssembly();
         }
     }
 }

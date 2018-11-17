@@ -1,16 +1,18 @@
 ﻿using System.Collections.Generic;
+using System.IO;
+using System.Reflection;
 using SoberSoftware.CastleWindsor.Installation.Installation;
 
 namespace SB_AppRunner
 {
-    public class BackendServices : IPluginAssemblyProvider
+    public class BackendServices : IPluginAssembliesProvider
     {
-        public IEnumerable<string> GetAssemblyNames()
+        public IEnumerable<Assembly> GetAssemblies()
         {
-            return new[]
+            return new List<Assembly>
             {
-                "ServiceBackend.Implementation",
-                "ServiceBackend.CustomerImplemenation"
+                Assembly.LoadFrom(Path.Combine(@"C:\Projects\CastleWindsor-PluginInstaller\Examples\ServiceBackend\SB-AppRunner\bin\Debug\netcoreapp2.1", "ServiceBackend.Implementation.dll")),
+                Assembly.LoadFrom(Path.Combine(@"C:\Projects\CastleWindsor-PluginInstaller\Examples\ServiceBackend\SB-AppRunner\bin\Debug\netcoreapp2.1", "ServiceBackend.CustomerImplemenation.dll"))
             };
         }
     }

@@ -5,7 +5,7 @@ namespace SoberSoftware.CastleWindsor.Installation.Licensing
 {
     public class AssemblyInformation
     {
-        public static string GetAssemblyName()
+        public static string GetThisAssemblyName()
         {
             return Assembly.GetCallingAssembly().FullName;
         }

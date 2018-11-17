@@ -9,7 +9,7 @@ namespace MT_AppRunner.Installation
     {
         public void Install(IWindsorContainer container, IConfigurationStore store)
         {
-            Registrator.RegisterThisAssembly(container);
+            container.RegisterThisAssembly();
         }
     }
 }

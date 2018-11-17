@@ -1,4 +1,5 @@
-﻿using SoberSoftware.CastleWindsor.Installation.Installation;
+﻿using System.Reflection;
+using SoberSoftware.CastleWindsor.Installation.Installation;
 using SoberSoftware.CastleWindsor.Installation.Licensing;
 
 namespace MT_AppRunner.Installation
@@ -7,7 +8,12 @@ namespace MT_AppRunner.Installation
     {
         public string GetAssemblyName()
         {
-            return AssemblyInformation.GetAssemblyName();
+            return AssemblyInformation.GetThisAssemblyName();
+        }
+
+        public Assembly GetAssembly()
+        {
+            return Assembly.GetExecutingAssembly();
         }
     }
 }

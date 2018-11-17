@@ -9,7 +9,7 @@ namespace SB_AppRunner
     {
         public void Install(IWindsorContainer container, IConfigurationStore store)
         {
-            Registrator.RegisterThisAssembly(container);
+            container.RegisterThisAssembly();
         }
     }
 }

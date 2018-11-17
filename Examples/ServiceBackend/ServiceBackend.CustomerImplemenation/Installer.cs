@@ -14,16 +14,16 @@ namespace ServiceBackend.CustomerImplemenation
     {
         public void Install(IWindsorContainer container, IConfigurationStore store)
         {
-            IsImplementation2 isImplementation2 = new IsImplementation2(Registrator.Resolve<IContextProvider>());
+            IsImplementation2 isImplementation2 = new IsImplementation2(container.Resolve<IContextProvider>());
 
-            Registrator.RegisterThisAssembly(container);
+            container.RegisterThisAssembly();
 
-            Registrator
+            container
                 .AddHandlerSelector<CustomerBackendRequestTranslator,
-                    IBackendRequestTranslator<ServiceRequest, BackendServiceRequest>>(container, isImplementation2);
-            Registrator
+                    IBackendRequestTranslator<ServiceRequest, BackendServiceRequest>>(isImplementation2);
+            container
                 .AddHandlerSelector<CustomerBackendRequestSender,
-                    IBackendRequestSender<BackendServiceRequest, BackendServiceResponse>>(container, isImplementation2);
+                    IBackendRequestSender<BackendServiceRequest, BackendServiceResponse>>(isImplementation2);
         }
     }
 }

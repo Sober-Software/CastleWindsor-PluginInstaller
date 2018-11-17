@@ -1,7 +1,10 @@
 ﻿using System;
+using Castle.Windsor;
 using ServiceBackend.Implementation.DataType;
 using ServiceBackend.Interfaces;
-using SoberSoftware.CastleWindsor.Installation.Registration;
+using SoberSoftware.CastleWindsor.Installation;
+using SoberSoftware.CastleWindsor.Installation.Installation;
+using SoberSoftware.CastleWindsor.Installation.Logging;
 
 namespace SB_AppRunner
 {
@@ -11,11 +14,16 @@ namespace SB_AppRunner
 
         private static void Main(string[] args)
         {
-            Registrator.InstallMainApplication(new Registration());
-            Registrator.InstallPluginAssemblies(new BackendServices());
+            IInstallationStrategy strategy = new DefaultInstallationStrategy(new Registration());
+            strategy.PluginAssembliesProvider = new DefaultPluginAssembliesProvider();
+
+            WindsorContainerWrapper installerWrapper = new WindsorContainerWrapper(new WindsorContainer(), new Registration(), new BackendServices());
+            installerWrapper.RegistrationLogger = new ConsoleRegistrationLogger();
+            installerWrapper.Install();
+            IWindsorContainer container = installerWrapper.WindsorContainer;
 
             IServiceProvider<string, BusinessResponse> serviceProvider =
-                Registrator.Resolve<IServiceProvider<string, BusinessResponse>>();
+                container.Resolve<IServiceProvider<string, BusinessResponse>>();
             string serviceData = @"{ ""datafield"" : ""Some data""}";
             BusinessResponse response = serviceProvider.PerformService(serviceData);
             Console.WriteLine($"{response.Success}");
@@ -28,7 +36,7 @@ namespace SB_AppRunner
             Console.Write("Implementation: ");
             Implementation = Console.ReadLine();
 
-            serviceProvider = Registrator.Resolve<IServiceProvider<string, BusinessResponse>>();
+            serviceProvider = container.Resolve<IServiceProvider<string, BusinessResponse>>();
             response = serviceProvider.PerformService(serviceData);
             Console.WriteLine($"{response.Success}");
 

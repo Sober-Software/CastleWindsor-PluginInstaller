@@ -4,7 +4,7 @@ using Castle.MicroKernel;
 
 namespace SoberSoftware.CastleWindsor.Installation.Registration
 {
-    public class HandlerSelector<TImplementation, TService> : IHandlerSelector
+    internal class HandlerSelector<TImplementation, TService> : IHandlerSelector
         where TImplementation : TService where TService : class
     {
         private readonly ISelectionCriterion[] selectionCriteria;

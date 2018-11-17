@@ -6,7 +6,7 @@ using Castle.Windsor.Installer;
 
 namespace SoberSoftware.CastleWindsor.Installation.Installation
 {
-    public class DefaultInstallationStrategy : IInstallationStrategy
+    internal class DefaultInstallationStrategy : IInstallationStrategy
     {
         public IMainAssemblyProvider MainAssemblyProvider { get; }
 

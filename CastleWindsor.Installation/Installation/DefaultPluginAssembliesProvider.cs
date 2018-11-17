@@ -3,7 +3,7 @@ using System.Reflection;
 
 namespace SoberSoftware.CastleWindsor.Installation.Installation
 {
-    public class DefaultPluginAssembliesProvider : IPluginAssembliesProvider
+    internal class DefaultPluginAssembliesProvider : IPluginAssembliesProvider
     {
         public IEnumerable<Assembly> GetAssemblies()
         {

@@ -8,8 +8,8 @@ namespace SoberSoftware.CastleWindsor.Installation.Installation
 
         void InstallPluginAssemblies(IWindsorContainer container);
 
-        IMainAssemblyProvider MainAssemblyProvider { get; set; }
+        IMainAssemblyProvider MainAssemblyProvider { get; }
 
-        IPluginAssembliesProvider PluginAssembliesProvider { get; set; }
+        IPluginAssembliesProvider PluginAssembliesProvider { get; }
     }
 }

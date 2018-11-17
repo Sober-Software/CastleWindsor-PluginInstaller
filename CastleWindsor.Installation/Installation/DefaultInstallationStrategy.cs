@@ -8,33 +8,9 @@ namespace SoberSoftware.CastleWindsor.Installation.Installation
 {
     public class DefaultInstallationStrategy : IInstallationStrategy
     {
-        private readonly IMainAssemblyProvider mainAssemblyProvider;
+        public IMainAssemblyProvider MainAssemblyProvider { get; }
 
-        private readonly IPluginAssembliesProvider pluginAssembliesProvider;
-
-        public IMainAssemblyProvider MainAssemblyProvider
-        {
-            get => mainAssemblyProvider;
-            set
-            {
-                if (value == null)
-                {
-                    throw new ArgumentNullException($"{nameof(mainAssemblyProvider)} cannot be null.");
-                }
-            }
-        }
-
-        public IPluginAssembliesProvider PluginAssembliesProvider
-        {
-            get => pluginAssembliesProvider;
-            set
-            {
-                if (value == null)
-                {
-                    throw new ArgumentNullException($"{nameof(PluginAssembliesProvider)} cannot be null.");
-                }
-            }
-        }
+        public IPluginAssembliesProvider PluginAssembliesProvider { get; }
 
         public DefaultInstallationStrategy(IMainAssemblyProvider mainAssemblyProvider) : this(mainAssemblyProvider,
             new DefaultPluginAssembliesProvider())
@@ -54,8 +30,8 @@ namespace SoberSoftware.CastleWindsor.Installation.Installation
                 throw new ArgumentNullException(nameof(pluginAssembliesProvider));
             }
 
-            this.mainAssemblyProvider = mainAssemblyProvider;
-            this.pluginAssembliesProvider = pluginAssembliesProvider;
+            MainAssemblyProvider = mainAssemblyProvider;
+            PluginAssembliesProvider = pluginAssembliesProvider;
         }
 
         public void InstallMainApplication(IWindsorContainer container)

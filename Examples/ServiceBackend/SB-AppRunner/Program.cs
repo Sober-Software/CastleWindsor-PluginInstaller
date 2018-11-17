@@ -15,7 +15,6 @@ namespace SB_AppRunner
         private static void Main(string[] args)
         {
             IInstallationStrategy strategy = new DefaultInstallationStrategy(new Registration());
-            strategy.PluginAssembliesProvider = new DefaultPluginAssembliesProvider();
 
             WindsorContainerWrapper installerWrapper = new WindsorContainerWrapper(new WindsorContainer(), new Registration(), new BackendServices());
             installerWrapper.RegistrationLogger = new ConsoleRegistrationLogger();

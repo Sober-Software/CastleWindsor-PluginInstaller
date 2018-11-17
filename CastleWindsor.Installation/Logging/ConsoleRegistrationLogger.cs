@@ -2,30 +2,13 @@
 using System.Linq;
 using Castle.Core;
 using Castle.MicroKernel;
-using Castle.Windsor;
+using SoberSoftware.CastleWindsor.Installation.Registration;
 
-namespace SoberSoftware.CastleWindsor.Installation.Registration
+namespace SoberSoftware.CastleWindsor.Installation.Logging
 {
-    public static class Registrator
+    public class ConsoleRegistrationLogger : IRegistrationLogger
     {
-        private static WindsorContainer containerInstance;
-
-        private static WindsorContainer ContainerInstance
-        {
-            get
-            {
-                if (containerInstance == null)
-                {
-                    containerInstance = new WindsorContainer();
-                    containerInstance.Kernel.ComponentRegistered += LogRegistration;
-                    containerInstance.Kernel.ComponentCreated += LogComponentCreation;
-                }
-
-                return containerInstance;
-            }
-        }
-
-        public static void LogComponentCreation(ComponentModel model, object o)
+        public void LogComponentCreated(ComponentModel model, object instance)
         {
             Console.ForegroundColor = ConsoleColor.DarkGray;
             Console.Write("Resolved ");
@@ -38,7 +21,7 @@ namespace SoberSoftware.CastleWindsor.Installation.Registration
             Console.ForegroundColor = ConsoleColor.White;
         }
 
-        public static void LogRegistration(string key, IHandler handler)
+        public void LogRegistration(string key, IHandler handler)
         {
             Console.ForegroundColor = ConsoleColor.DarkGray;
             Console.WriteLine($"Registered {key} for {handler.ComponentModel.Services.First().Name}");

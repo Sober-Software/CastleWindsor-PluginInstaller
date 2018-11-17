@@ -3,9 +3,8 @@ using Castle.Windsor;
 using MT_AppRunner.Customer;
 using MT_AppRunner.Installation;
 using MT_AppRunner.Output;
-using SoberSoftware.CastleWindsor.Installation.Installation;
-using SoberSoftware.CastleWindsor.Installation.Licensing;
-using SoberSoftware.CastleWindsor.Installation.Registration;
+using SoberSoftware.CastleWindsor.Installation;
+using SoberSoftware.CastleWindsor.Installation.Logging;
 
 namespace MT_AppRunner
 {
@@ -13,12 +12,17 @@ namespace MT_AppRunner
     {
         private static void Main(string[] args)
         {
-            WindsorContainer container = new WindsorContainer();
+            WindsorContainerWrapper containerWrapper = new WindsorContainerWrapper(new WindsorContainer(),
+                new MainAssemblyProvider(), new PluginRegistration());
+            containerWrapper.RegistrationLogger = new ConsoleRegistrationLogger();
+            containerWrapper.Install();
+            IWindsorContainer container = containerWrapper.WindsorContainer;
 
             do
             {
                 Console.Write("Customer Key: ");
-                ContextUtilities.ContextValidationString = Console.ReadLine();
+                Console.ReadLine();
+                //ContextUtilities.ContextValidationString = Console.ReadLine();
                 ICustomerInformation customerInformation = container.Resolve<ICustomerInformation>();
                 IConsoleWriter consoleWriter = container.Resolve<IConsoleWriter>();
 

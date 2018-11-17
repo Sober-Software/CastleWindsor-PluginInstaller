@@ -4,6 +4,7 @@ using ServiceBackend.Implementation.DataType;
 using ServiceBackend.Interfaces;
 using SoberSoftware.CastleWindsor.Installation;
 using SoberSoftware.CastleWindsor.Installation.Installation;
+using SoberSoftware.CastleWindsor.Installation.Logging;
 
 namespace SB_AppRunner
 {
@@ -17,6 +18,7 @@ namespace SB_AppRunner
             strategy.PluginAssembliesProvider = new DefaultPluginAssembliesProvider();
 
             WindsorContainerWrapper installerWrapper = new WindsorContainerWrapper(new WindsorContainer(), new Registration(), new BackendServices());
+            installerWrapper.RegistrationLogger = new ConsoleRegistrationLogger();
             installerWrapper.Install();
             IWindsorContainer container = installerWrapper.WindsorContainer;
 

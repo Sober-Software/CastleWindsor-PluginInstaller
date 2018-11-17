@@ -1,18 +1,67 @@
 ﻿using System;
+using Castle.Core;
+using Castle.MicroKernel;
 using Castle.Windsor;
 using SoberSoftware.CastleWindsor.Installation.Installation;
+using SoberSoftware.CastleWindsor.Installation.Logging;
+using SoberSoftware.CastleWindsor.Installation.Registration;
 
 namespace SoberSoftware.CastleWindsor.Installation
 {
     public class WindsorContainerWrapper
     {
+        private IRegistrationLogger registrationLogger;
+
+        private IWindsorContainer windsorContainer;
+
         public IInstallationStrategy InstallationStrategy { get; }
 
         public IMainAssemblyProvider MainAssemblyProvider { get; }
 
         public IPluginAssembliesProvider PluginAssembliesProvider { get; }
 
-        public IWindsorContainer WindsorContainer { get; }
+        public IRegistrationLogger RegistrationLogger
+        {
+            get
+            {
+                if (registrationLogger == null)
+                {
+                    registrationLogger = new NullRegistrationLogger();
+                }
+
+                return registrationLogger;
+            }
+            set
+            {
+                if (value == null)
+                {
+                    throw new ArgumentNullException($"{nameof(RegistrationLogger)} cannot be null.");
+                }
+
+                registrationLogger = value;
+            }
+        }
+
+        public IWindsorContainer WindsorContainer
+        {
+            get => windsorContainer;
+            private set
+            {
+                windsorContainer = value;
+                windsorContainer.Kernel.ComponentRegistered += LogComponentRegisered;
+                windsorContainer.Kernel.ComponentCreated += LogComponentCreated;
+            }
+        }
+
+        private void LogComponentCreated(ComponentModel model, object instance)
+        {
+            RegistrationLogger.LogComponentCreated(model, instance);
+        }
+
+        private void LogComponentRegisered(string key, IHandler handler)
+        {
+            RegistrationLogger.LogRegistration(key, handler);
+        }
 
         public WindsorContainerWrapper(IWindsorContainer container, IMainAssemblyProvider mainAssemblyProvider,
             IPluginAssembliesProvider pluginAssembliesProvider)

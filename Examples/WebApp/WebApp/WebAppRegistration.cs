@@ -1,9 +1,9 @@
 ﻿using System.Reflection;
 using SoberSoftware.CastleWindsor.Installation.Installation;
 
-namespace MT_AppRunner.Installation
+namespace WebApp
 {
-    public class MainAssemblyProvider : IMainAssemblyProvider
+    public class WebAppRegistration : IMainAssemblyProvider
     {
         public Assembly GetAssembly()
         {

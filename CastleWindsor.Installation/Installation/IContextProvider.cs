@@ -1,7 +1,7 @@
 ﻿namespace SoberSoftware.CastleWindsor.Installation.Installation
 {
-    public interface IContextProvider
+    public interface IContextProvider<T>
     {
-        string GetContext();
+        T GetContext();
     }
 }

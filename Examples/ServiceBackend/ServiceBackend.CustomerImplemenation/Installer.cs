@@ -14,7 +14,7 @@ namespace ServiceBackend.CustomerImplemenation
     {
         public void Install(IWindsorContainer container, IConfigurationStore store)
         {
-            IsImplementation2 isImplementation2 = new IsImplementation2(container.Resolve<IContextProvider>());
+            IsImplementation2 isImplementation2 = new IsImplementation2(container.Resolve<IContextProvider<string>>());
 
             container.RegisterThisAssembly();
 

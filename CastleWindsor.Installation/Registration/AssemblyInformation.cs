@@ -1,15 +1,10 @@
 ﻿using System;
 using System.Reflection;
 
-namespace SoberSoftware.CastleWindsor.Installation.Licensing
+namespace SoberSoftware.CastleWindsor.Installation.Registration
 {
     public class AssemblyInformation
     {
-        public static string GetThisAssemblyName()
-        {
-            return Assembly.GetCallingAssembly().FullName;
-        }
-
         public static string GetAttributeValue<TAttribute>(Func<TAttribute,
             string> resolveFunc, Assembly assembly) where TAttribute : Attribute
         {

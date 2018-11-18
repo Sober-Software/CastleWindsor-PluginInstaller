@@ -26,7 +26,7 @@ namespace SoberSoftware.CastleWindsor.Installation
             {
                 if (registrationLogger == null)
                 {
-                    registrationLogger = new NullRegistrationLogger();
+                    registrationLogger = new NullLogger();
                 }
 
                 return registrationLogger;
@@ -48,7 +48,7 @@ namespace SoberSoftware.CastleWindsor.Installation
             private set
             {
                 windsorContainer = value;
-                windsorContainer.Kernel.ComponentRegistered += LogComponentRegisered;
+                windsorContainer.Kernel.ComponentRegistered += LogComponentRegistered;
                 windsorContainer.Kernel.ComponentCreated += LogComponentCreated;
             }
         }
@@ -58,7 +58,7 @@ namespace SoberSoftware.CastleWindsor.Installation
             RegistrationLogger.LogComponentCreated(model, instance);
         }
 
-        private void LogComponentRegisered(string key, IHandler handler)
+        private void LogComponentRegistered(string key, IHandler handler)
         {
             RegistrationLogger.LogRegistration(key, handler);
         }

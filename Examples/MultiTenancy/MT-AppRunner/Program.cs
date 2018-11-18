@@ -14,7 +14,7 @@ namespace MT_AppRunner
         {
             WindsorContainerWrapper containerWrapper = new WindsorContainerWrapper(new WindsorContainer(),
                 new MainAssemblyProvider(), new PluginRegistration());
-            containerWrapper.RegistrationLogger = new ConsoleRegistrationLogger();
+            containerWrapper.RegistrationLogger = new ConsoleLogger();
             containerWrapper.Install();
             IWindsorContainer container = containerWrapper.WindsorContainer;
 

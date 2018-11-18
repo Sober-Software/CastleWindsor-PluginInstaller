@@ -15,7 +15,7 @@ namespace SB_AppRunner
         {
             WindsorContainerWrapper installerWrapper =
                 new WindsorContainerWrapper(new WindsorContainer(), new Registration(), new BackendServices());
-            installerWrapper.RegistrationLogger = new ConsoleRegistrationLogger();
+            installerWrapper.RegistrationLogger = new ConsoleLogger();
             installerWrapper.Install();
             IWindsorContainer container = installerWrapper.WindsorContainer;
 

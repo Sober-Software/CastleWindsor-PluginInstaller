@@ -5,9 +5,9 @@ namespace ServiceBackend.CustomerImplemenation
 {
     public class IsImplementation2 : ISelectionCriterion
     {
-        private readonly IContextProvider contextProvider;
+        private readonly IContextProvider<string> contextProvider;
 
-        public IsImplementation2(IContextProvider contextProvider)
+        public IsImplementation2(IContextProvider<string> contextProvider)
         {
             this.contextProvider = contextProvider;
         }

@@ -2,7 +2,7 @@
 
 namespace SB_AppRunner
 {
-    public class ImplementationProvider : IContextProvider
+    public class ImplementationProvider : IContextProvider<string>
     {
         public string GetContext()
         {

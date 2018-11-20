@@ -19,7 +19,7 @@ namespace SB_AppRunner
             installerWrapper.RegistrationLogger = new ConsoleLogger();
             installerWrapper.Install();
             IWindsorContainer container = installerWrapper.WindsorContainer;
-
+            
             IServiceProvider<string, BusinessResponse> serviceProvider =
                 container.Resolve<IServiceProvider<string, BusinessResponse>>();
             string serviceData = @"{ ""datafield"" : ""Some data""}";

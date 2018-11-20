@@ -12,10 +12,10 @@ namespace SB_AppRunner
     {
         public void Install(IWindsorContainer container, IConfigurationStore store)
         {
+            container.SetServiceDefault<NullLogger, ILogger>();
             container.RegisterThisAssembly();
             
-            container.AddHandlerSelector<NullLogger, ILogger>(new AlwaysFalse());
-            container.AddHandlerSelector<ConsoleLogger, ILogger>(new AlwaysFalse());
+            container.AddHandlerSelector<ConsoleLogger, ILogger>(new AlwaysTrue());
         }
     }
 }

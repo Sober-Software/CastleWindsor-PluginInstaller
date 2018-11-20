@@ -19,5 +19,11 @@ namespace SoberSoftware.CastleWindsor.Installation.Registration
             container.Register(Classes.FromAssembly(Assembly.GetCallingAssembly()).Pick().WithServiceAllInterfaces()
                 .LifestyleTransient());
         }
+
+        public static void SetServiceDefault<TImplementation, TService>(this IWindsorContainer container)
+            where TImplementation : TService where TService : class
+        {
+            container.Register(Component.For<TService, TImplementation>().IsDefault());
+        }
     }
 }

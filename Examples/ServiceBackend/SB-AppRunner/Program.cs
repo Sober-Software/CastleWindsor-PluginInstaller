@@ -1,4 +1,5 @@
 ﻿using System;
+using Castle.MicroKernel.Resolvers;
 using Castle.Windsor;
 using ServiceBackend.Implementation.DataType;
 using ServiceBackend.Interfaces;
@@ -41,6 +42,8 @@ namespace SB_AppRunner
             {
                 Console.WriteLine($"{responseMessage}");
             }
+
+            Console.ReadKey();
         }
     }
 }

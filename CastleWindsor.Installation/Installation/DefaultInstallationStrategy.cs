@@ -50,7 +50,9 @@ namespace SoberSoftware.CastleWindsor.Installation.Installation
 
         public void InstallMainApplication(IWindsorContainer container)
         {
-            container.Install(FromAssembly.Instance(MainAssemblyProvider.GetAssembly()));
+            container.Install(new ScenarioInstaller(MainAssemblyProvider.GetAssembly(), new InstallerFactory()));
+
+            //container.Install(FromAssembly.Instance(MainAssemblyProvider.GetAssembly()));
         }
 
         public void InstallPluginAssemblies(IWindsorContainer container)
@@ -59,7 +61,7 @@ namespace SoberSoftware.CastleWindsor.Installation.Installation
 
             foreach (Assembly assembly in pluginAssemblies)
             {
-                container.Install(FromAssembly.Instance(assembly, InstallerFactory));
+                container.Install(new ScenarioInstaller(assembly, InstallerFactory));
             }
         }
     }

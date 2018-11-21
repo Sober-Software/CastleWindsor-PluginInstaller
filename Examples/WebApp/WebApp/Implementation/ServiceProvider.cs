@@ -7,7 +7,7 @@ namespace WebApp.Implementation
     {
         public int PerformService(string serviceData)
         {
-            return 2;
+            return 1;
         }
     }
 }

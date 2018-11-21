@@ -1,5 +1,4 @@
-﻿using Castle.MicroKernel.Registration;
-using Castle.MicroKernel.SubSystems.Configuration;
+﻿using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
 using ServiceBackend.CustomerImplemenation.ServiceLogic;
 using ServiceBackend.Implementation.BusinessLogic;
@@ -10,20 +9,32 @@ using SoberSoftware.CastleWindsor.Installation.Registration;
 
 namespace ServiceBackend.CustomerImplemenation
 {
-    public class Installer : IWindsorInstaller
+    public class Installer : IScenarioInstaller
     {
-        public void Install(IWindsorContainer container, IConfigurationStore store)
+        public void DeclareDefaultServiceImplementations(IWindsorContainer container, IConfigurationStore store)
+        {
+            // None.
+        }
+
+        public void DeclareResolutionScenarios(IWindsorContainer container, IConfigurationStore store)
         {
             IsImplementation2 isImplementation2 = new IsImplementation2(container.Resolve<IContextProvider<string>>());
 
-            container.RegisterThisAssembly();
-
             container
-                .AddHandlerSelector<CustomerBackendRequestTranslator,
+                .AddImplementationCriteria<CustomerBackendRequestTranslator,
                     IBackendRequestTranslator<ServiceRequest, BackendServiceRequest>>(isImplementation2);
             container
-                .AddHandlerSelector<CustomerBackendRequestSender,
+                .AddImplementationCriteria<CustomerBackendRequestSender,
                     IBackendRequestSender<BackendServiceRequest, BackendServiceResponse>>(isImplementation2);
+
+            container
+                .AddImplementationCriteria<CustomerBackendSender,
+                    IBackendRequestSender<BackendServiceRequest, BackendServiceResponse>>();
+        }
+
+        public void InstallAssembly(IWindsorContainer container, IConfigurationStore store)
+        {
+            container.RegisterThisAssembly();
         }
     }
 }

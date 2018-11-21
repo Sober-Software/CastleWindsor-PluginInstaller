@@ -4,4 +4,8 @@
     {
         bool IsTrue();
     }
+
+    public interface ISelectionCriterion<T> : ISelectionCriterion where T : class
+    {
+    }
 }

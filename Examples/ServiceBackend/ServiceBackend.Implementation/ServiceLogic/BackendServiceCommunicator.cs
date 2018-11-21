@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using System;
+using Newtonsoft.Json;
 using ServiceBackend.Implementation.BusinessLogic;
 using ServiceBackend.Implementation.DataType;
 using ServiceBackend.Interfaces.ConsumedApiLogic;
@@ -47,19 +48,19 @@ namespace ServiceBackend.Implementation.ServiceLogic
         private void LogTranslatedREsponse(ServiceResponse translatedResponse)
         {
             string serviceResponseAsJson = JsonConvert.SerializeObject(translatedResponse, Formatting.Indented);
-            logger.LogInformation($"Translated the following response: {serviceResponseAsJson}");
+            logger.LogInformation($"Translated the following response:{Environment.NewLine}{serviceResponseAsJson}");
         }
 
         private void LogServiceResponse(BackendServiceResponse serviceResponse)
         {
             string serviceResponseAsJson = JsonConvert.SerializeObject(serviceResponse, Formatting.Indented);
-            logger.LogInformation($"Received the following response from service: {serviceResponseAsJson}");
+            logger.LogInformation($"Received the following response from service:{Environment.NewLine}{serviceResponseAsJson}");
         }
 
         private void LogTranslatedRequest(BackendServiceRequest serviceRequest)
         {
             string serviceRequestAsJson = JsonConvert.SerializeObject(serviceRequest, Formatting.Indented);
-            logger.LogInformation($"Translated the following service request: {serviceRequestAsJson}");
+            logger.LogInformation($"Translated the following service request:{Environment.NewLine}{serviceRequestAsJson}");
         }
     }
 }

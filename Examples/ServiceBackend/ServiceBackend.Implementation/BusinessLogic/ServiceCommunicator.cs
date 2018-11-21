@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using System;
+using Newtonsoft.Json;
 using ServiceBackend.Implementation.DataType;
 using ServiceBackend.Interfaces.BusinessLogic;
 using ServiceBackend.Interfaces.ConsumedApiLogic;
@@ -33,7 +34,7 @@ namespace ServiceBackend.Implementation.BusinessLogic
         private void LogRequest(ServiceRequest request)
         {
             string requestAsJson = JsonConvert.SerializeObject(request);
-            logger.LogInformation($"Generated request: {requestAsJson}");
+            logger.LogInformation($"Generated request:{Environment.NewLine}{requestAsJson}");
         }
     }
 }

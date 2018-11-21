@@ -12,7 +12,7 @@ namespace SB_AppRunner
     {
         public void DeclareDefaultServiceImplementations(IWindsorContainer container, IConfigurationStore store)
         {
-            container.SetServiceDefault<ConsoleLogger, ILogger>();
+            container.DeclareServiceDefault<ConsoleLogger, ILogger>();
         }
 
         public void DeclareResolutionScenarios(IWindsorContainer container, IConfigurationStore store)

@@ -31,16 +31,30 @@ namespace SoberSoftware.CastleWindsor.Installation.Registration
                 new HandlerSelector<TImplementation, TService>(combinedCriteria));
         }
 
+        /// <summary>
+        ///     Sets service default implementation to the specified type.
+        ///     Multiple uses override previously declared defaults.
+        /// </summary>
+        /// <typeparam name="TImplementation"></typeparam>
+        /// iu
+        /// <typeparam name="TService"></typeparam>
+        /// <param name="container"></param>
+        public static void DeclareServiceDefault<TImplementation, TService>(this IWindsorContainer container)
+            where TImplementation : TService where TService : class
+        {
+            container.Register(Component.For<TService, TImplementation>().IsDefault());
+        }
+
+        /// <summary>
+        ///     Register all classes from the assembly that calls this method.
+        ///     Classes will be registered as service implementations for each service
+        ///     interface they implement.
+        /// </summary>
+        /// <param name="container"></param>
         public static void RegisterThisAssembly(this IWindsorContainer container)
         {
             container.Register(Classes.FromAssembly(Assembly.GetCallingAssembly()).Pick().WithServiceAllInterfaces()
                 .LifestyleTransient());
-        }
-
-        public static void SetServiceDefault<TImplementation, TService>(this IWindsorContainer container)
-            where TImplementation : TService where TService : class
-        {
-            container.Register(Component.For<TService, TImplementation>().IsDefault());
         }
     }
 }

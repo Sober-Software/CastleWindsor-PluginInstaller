@@ -50,9 +50,7 @@ namespace SoberSoftware.CastleWindsor.Installation.Installation
 
         public void InstallMainApplication(IWindsorContainer container)
         {
-            container.Install(new ScenarioInstaller(MainAssemblyProvider.GetAssembly(), new InstallerFactory()));
-
-            //container.Install(FromAssembly.Instance(MainAssemblyProvider.GetAssembly()));
+            container.Install(new ScenarioInstaller(MainAssemblyProvider.GetAssembly(), InstallerFactory));
         }
 
         public void InstallPluginAssemblies(IWindsorContainer container)

@@ -49,7 +49,6 @@
   <ItemGroup>
     <Compile Include="Customer\CustomerInformation.cs" />
     <Compile Include="DateTimeFormat.cs" />
-    <Compile Include="Installation\AlwaysFalse.cs" />
     <Compile Include="Installation\CustomerInstallation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

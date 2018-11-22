@@ -52,6 +52,7 @@
     <Compile Include="ConsumedApiLogic\IBackendRequestTranslator.cs" />
     <Compile Include="ConsumedApiLogic\IBackendResponseTranslator.cs" />
     <Compile Include="IServiceProvider.cs" />
+    <Compile Include="Logging\ILogger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

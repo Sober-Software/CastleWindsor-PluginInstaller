@@ -1,4 +1,5 @@
 ﻿using System;
+using Castle.MicroKernel.Resolvers;
 using Castle.Windsor;
 using ServiceBackend.Implementation.DataType;
 using ServiceBackend.Interfaces;
@@ -18,7 +19,7 @@ namespace SB_AppRunner
             installerWrapper.RegistrationLogger = new ConsoleLogger();
             installerWrapper.Install();
             IWindsorContainer container = installerWrapper.WindsorContainer;
-
+            
             IServiceProvider<string, BusinessResponse> serviceProvider =
                 container.Resolve<IServiceProvider<string, BusinessResponse>>();
             string serviceData = @"{ ""datafield"" : ""Some data""}";
@@ -41,6 +42,8 @@ namespace SB_AppRunner
             {
                 Console.WriteLine($"{responseMessage}");
             }
+
+            Console.ReadKey();
         }
     }
 }

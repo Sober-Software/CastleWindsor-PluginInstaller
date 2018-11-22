@@ -8,17 +8,25 @@ namespace SoberSoftware.CastleWindsor.Installation.Installation
 {
     internal class DefaultInstallationStrategy : IInstallationStrategy
     {
+        public InstallerFactory InstallerFactory { get; }
+
         public IMainAssemblyProvider MainAssemblyProvider { get; }
 
         public IPluginAssembliesProvider PluginAssembliesProvider { get; }
 
         public DefaultInstallationStrategy(IMainAssemblyProvider mainAssemblyProvider) : this(mainAssemblyProvider,
-            new DefaultPluginAssembliesProvider())
+            new DefaultPluginAssembliesProvider(), new InstallerPriority())
         {
         }
 
         public DefaultInstallationStrategy(IMainAssemblyProvider mainAssemblyProvider,
-            IPluginAssembliesProvider pluginAssembliesProvider)
+            IPluginAssembliesProvider pluginAssembliesProvider) : this(mainAssemblyProvider, pluginAssembliesProvider,
+            new InstallerFactory())
+        {
+        }
+
+        public DefaultInstallationStrategy(IMainAssemblyProvider mainAssemblyProvider,
+            IPluginAssembliesProvider pluginAssembliesProvider, InstallerFactory installerFactory)
         {
             if (mainAssemblyProvider == null)
             {
@@ -30,13 +38,19 @@ namespace SoberSoftware.CastleWindsor.Installation.Installation
                 throw new ArgumentNullException(nameof(pluginAssembliesProvider));
             }
 
+            if (installerFactory == null)
+            {
+                throw new ArgumentNullException(nameof(installerFactory));
+            }
+
             MainAssemblyProvider = mainAssemblyProvider;
             PluginAssembliesProvider = pluginAssembliesProvider;
+            InstallerFactory = installerFactory;
         }
 
         public void InstallMainApplication(IWindsorContainer container)
         {
-            container.Install(FromAssembly.Instance(MainAssemblyProvider.GetAssembly()));
+            container.Install(new ScenarioInstaller(MainAssemblyProvider.GetAssembly(), InstallerFactory));
         }
 
         public void InstallPluginAssemblies(IWindsorContainer container)
@@ -45,7 +59,7 @@ namespace SoberSoftware.CastleWindsor.Installation.Installation
 
             foreach (Assembly assembly in pluginAssemblies)
             {
-                container.Install(FromAssembly.Instance(assembly));
+                container.Install(new ScenarioInstaller(assembly, InstallerFactory));
             }
         }
     }
